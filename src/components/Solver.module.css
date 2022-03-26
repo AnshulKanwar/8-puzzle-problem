@@ -1,0 +1,32 @@
+.container {
+    border-left: .2em solid black;
+    padding-left: 2em;
+}
+
+.header {
+  margin-bottom: 1em;
+}
+
+.solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+}
+
+@media screen and (max-width: 1000px) {
+    .solution {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .solution {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .solution {
+        grid-template-columns: 1fr;
+    }
+}

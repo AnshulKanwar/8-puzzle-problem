@@ -1,0 +1,16 @@
+.board {
+    display: grid;
+    max-width: 10em;
+    max-height: 10em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.tile {
+    padding: 0.5em;
+    border: 0.08em solid white;
+}
