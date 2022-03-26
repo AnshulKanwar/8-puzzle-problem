@@ -22,8 +22,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://anshulkanwar.github.io/8-puzzle-problem",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -43,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.180"
+    "@types/lodash": "^4.14.180",
+    "gh-pages": "^3.2.3"
   }
 }
