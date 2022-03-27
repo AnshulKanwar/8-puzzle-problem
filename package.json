@@ -26,7 +26,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://anshulkanwar.github.io/8-puzzle-problem",
+  "homepage": "https://K3rnalP4n1c.github.io/8-puzzle-problem",
   "eslintConfig": {
     "extends": [
       "react-app",

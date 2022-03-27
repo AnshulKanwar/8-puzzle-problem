@@ -15,12 +15,12 @@ Built using ReactJs.
 1. Add User specified input
 2. Add algorithms
     - [x] Best First Search (BFS) 
-    - [ ] Simple Hill Climbing
+    - [x] Simple Hill Climbing
     - [ ] Steepest Hill Climbing
     - [ ] Depth First Search (DFS)
     - [ ] Breadth First Search (BFS)
 3. Add Heuristics
     - [x] Misplaced Tiles
-    - [ ] Manhattan Distacen
-    - [ ] Euclidean Distacen
+    - [x] Manhattan Distacen
+    - [x] Euclidean Distacen
     - [ ] Minkowski Distacen

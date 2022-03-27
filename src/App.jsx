@@ -10,9 +10,9 @@ function App() {
     [7, 6, 5],
   ]);
   const [goalState, setGoalState] = useState([
-    [1, 4, 2],
-    [7, 8, 3],
-    [null, 6, 5],
+    [1, 2, 3],
+    [8, null, 4],
+    [7, 6, 5],
   ]);
 
   return (

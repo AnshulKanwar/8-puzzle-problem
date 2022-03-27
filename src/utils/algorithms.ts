@@ -1,23 +1,18 @@
 import _ from "lodash";
 import Puzzle from "./8_puzzle_problem";
 
-type Node = {
-  puzzle: Puzzle;
-  h: number;
-};
-
 export const befs = (
   initial: Puzzle,
   goal: Puzzle,
   h: (a: Puzzle, b: Puzzle) => number
 ) => {
-  let open: Node[] = [{ puzzle: initial, h: h(initial, goal) }];
-  let closed: Puzzle[] = [];
+  let open = [{ puzzle: initial, h: h(initial, goal) }];
+  let closed: { puzzle: Puzzle; h: number }[] = [];
 
-  let nextNode: Node;
+  let nextNode;
   while (open.length > 0) {
     nextNode = open.shift();
-    closed.push(nextNode.puzzle);
+    closed.push(nextNode);
 
     // Generate Successors
     let successors = [
@@ -34,7 +29,7 @@ export const befs = (
       }
 
       for (let i = 0; i < closed.length; i++) {
-        if (_.isEqual(closed[i], successor)) {
+        if (_.isEqual(closed[i].puzzle, successor)) {
           return false;
         }
       }
@@ -44,7 +39,7 @@ export const befs = (
     for (let i = 0; i < successors.length; i++) {
       if (successors[i] !== null) {
         if (_.isEqual(successors[i], goal)) {
-          closed.push(successors[i]);
+          closed.push({ puzzle: successors[i], h: h(successors[i], goal) });
           return closed;
         }
         open.push({ puzzle: successors[i], h: h(successors[i], goal) });
@@ -52,5 +47,52 @@ export const befs = (
     }
 
     open.sort((a, b) => a.h - b.h);
+  }
+};
+
+export const hillClimbing = (
+  initial: Puzzle,
+  goal: Puzzle,
+  h: (a: Puzzle, b: Puzzle) => number
+) => {
+  let open = initial;
+  let closed: Puzzle[] = [];
+
+  let currentNode;
+  while (true) {
+    currentNode = open;
+    closed.push(currentNode);
+
+    // Generate Successors
+    let successors = [
+      currentNode.left(),
+      currentNode.right(),
+      currentNode.up(),
+      currentNode.down(),
+    ];
+
+    // Remove successors present in closed or that are null
+    successors = successors.filter((successor) => {
+      if (successor == null) {
+        return false;
+      }
+
+      for (let i = 0; i < closed.length; i++) {
+        if (_.isEqual(closed[i], successor)) {
+          return false;
+        }
+      }
+      return true;
+    });
+
+    for (let i = 0; i < successors.length; i++) {
+      if (_.isEqual(successors[i], goal)) {
+        closed.push(successors[i]);
+        return closed;
+      } else if (h(successors[i], goal) < h(currentNode, goal)) {
+        open = successors[i];
+        break;
+      }
+    }
   }
 };
