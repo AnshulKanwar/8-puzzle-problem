@@ -15,16 +15,17 @@ The site can be viewed at https://k3rnalp4n1c.github.io/8-puzzle-problem/
 
 # TODO
 
-1. Add User specified input
+1. Make Problem Asynchnorus
+2. Add User specified input
     - [ ] User specified initial and final state
     - [x] User specified algorithm and heuristic
-2. Add algorithms
+3. Add algorithms
     - [x] Best First Search (BFS) 
     - [x] Simple Hill Climbing
     - [ ] Steepest Hill Climbing
     - [ ] Depth First Search (DFS)
     - [ ] Breadth First Search (BFS)
-3. Add Heuristics
+4. Add Heuristics
     - [x] Misplaced Tiles
     - [x] Manhattan Distacen
     - [x] Euclidean Distacen

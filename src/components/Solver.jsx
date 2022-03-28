@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import styles from "./Solver.module.css";
 import Puzzle from "../utils/8_puzzle_problem";
-import { befs, simpleHillClimbing } from "../utils/algorithms";
+import { bfs, befs, simpleHillClimbing } from "../utils/algorithms";
 import { misplacedTiles, manhattanDistance, euclideanDistance } from "../utils/heuristics";
 import Board from "./Board";
 
@@ -14,6 +14,9 @@ function Solver({ initialState, goalState, algorithm, heuristic }) {
   let heur
 
   switch (algorithm) {
+    case 'breadth-first-search':
+      algo = bfs
+      break;
     case 'best-first-search':
       algo = befs
       break;
@@ -21,7 +24,7 @@ function Solver({ initialState, goalState, algorithm, heuristic }) {
       algo = simpleHillClimbing
       break;
     default:
-      algo = befs
+      algo = bfs
   }
 
   switch (heuristic) {

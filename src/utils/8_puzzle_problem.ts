@@ -94,7 +94,7 @@ export default class Puzzle {
 
     const { x, y } = this.empty;
 
-    if (x === 2) {
+    if (y === 2) {
       return null;
     }
 

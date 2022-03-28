@@ -21,6 +21,7 @@ function UserInput({
             value={algorithm}
             onChange={(e) => setAlgorithm(e.target.value)}
           >
+            <option value="breadth-first-search">Breadth First Search</option>
             <option value="best-first-search">Best First Search</option>
             <option value="simple-hill-climbing">Simple Hill Climbing</option>
           </select>
