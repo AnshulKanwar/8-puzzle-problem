@@ -7,19 +7,19 @@ export const befs = (
   h: (a: Puzzle, b: Puzzle) => number
 ) => {
   let open = [{ puzzle: initial, h: h(initial, goal) }];
-  let closed: { puzzle: Puzzle; h: number }[] = [];
+  let closed: Puzzle[] = [];
 
-  let nextNode;
+  let currentNode;
   while (open.length > 0) {
-    nextNode = open.shift();
-    closed.push(nextNode);
+    currentNode = open.shift();
+    closed.push(currentNode.puzzle);
 
     // Generate Successors
     let successors = [
-      nextNode.puzzle.left(),
-      nextNode.puzzle.right(),
-      nextNode.puzzle.up(),
-      nextNode.puzzle.down(),
+      currentNode.puzzle.left(),
+      currentNode.puzzle.right(),
+      currentNode.puzzle.up(),
+      currentNode.puzzle.down(),
     ];
 
     // Remove successors present in closed
@@ -29,7 +29,7 @@ export const befs = (
       }
 
       for (let i = 0; i < closed.length; i++) {
-        if (_.isEqual(closed[i].puzzle, successor)) {
+        if (_.isEqual(closed[i], successor)) {
           return false;
         }
       }
@@ -39,7 +39,7 @@ export const befs = (
     for (let i = 0; i < successors.length; i++) {
       if (successors[i] !== null) {
         if (_.isEqual(successors[i], goal)) {
-          closed.push({ puzzle: successors[i], h: h(successors[i], goal) });
+          closed.push(successors[i]);
           return closed;
         }
         open.push({ puzzle: successors[i], h: h(successors[i], goal) });
@@ -50,7 +50,7 @@ export const befs = (
   }
 };
 
-export const hillClimbing = (
+export const simpleHillClimbing = (
   initial: Puzzle,
   goal: Puzzle,
   h: (a: Puzzle, b: Puzzle) => number

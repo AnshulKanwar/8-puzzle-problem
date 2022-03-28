@@ -1,14 +1,45 @@
 import { v4 as uuidv4 } from "uuid";
+
 import styles from "./Solver.module.css";
 import Puzzle from "../utils/8_puzzle_problem";
-import { befs, hillClimbing } from "../utils/algorithms";
-import { misplacedTiles } from "../utils/heuristics";
+import { befs, simpleHillClimbing } from "../utils/algorithms";
+import { misplacedTiles, manhattanDistance, euclideanDistance } from "../utils/heuristics";
 import Board from "./Board";
 
-function Solver({ initialState, goalState }) {
+function Solver({ initialState, goalState, algorithm, heuristic }) {
   const initial = new Puzzle(initialState);
   const goal = new Puzzle(goalState);
-  const solution = hillClimbing(initial, goal, misplacedTiles);
+
+  let algo
+  let heur
+
+  switch (algorithm) {
+    case 'best-first-search':
+      algo = befs
+      break;
+    case 'simple-hill-climbing':
+      algo = simpleHillClimbing
+      break;
+    default:
+      algo = befs
+  }
+
+  switch (heuristic) {
+    case 'misplaced-tiles':
+      heur = misplacedTiles
+      break;
+    case 'manhattan-distance':
+      heur = manhattanDistance
+      break;
+    case 'euclidean-distance':
+      heur = euclideanDistance
+      break;
+    default:
+      heur = misplacedTiles
+  }
+
+  const solution = algo(initial, goal, heur);
+  console.log(solution);
 
   return (
     <div className={styles.container}>

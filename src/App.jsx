@@ -9,11 +9,15 @@ function App() {
     [1, 8, 4],
     [7, 6, 5],
   ]);
+
   const [goalState, setGoalState] = useState([
     [1, 2, 3],
-    [8, null, 4],
-    [7, 6, 5],
+    [8, 4, 5],
+    [null, 7, 6],
   ]);
+
+  const [algorithm, setAlgorithm] = useState("simple-hill-climbing");
+  const [heuristic, setHeuristic] = useState("misplaced-tiles");
 
   return (
     <div className={style.App}>
@@ -24,8 +28,17 @@ function App() {
           setInitialState={setInitialState}
           goalState={goalState}
           setGoalState={setGoalState}
+          algorithm={algorithm}
+          setAlgorithm={setAlgorithm}
+          heuristic={heuristic}
+          setHeuristic={setHeuristic}
         />
-        <Solver initialState={initialState} goalState={goalState} />
+        <Solver
+          initialState={initialState}
+          goalState={goalState}
+          algorithm={algorithm}
+          heuristic={heuristic}
+        />
       </div>
     </div>
   );
