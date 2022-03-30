@@ -1,13 +1,14 @@
 import _ from "lodash";
 import Puzzle from "./8_puzzle_problem";
 
-export const bfs = (
-  initial: Puzzle,
-  goal: Puzzle,
-  h: (a: Puzzle, b: Puzzle) => number
-) => {
-  let open = [initial];
-  let closed: Puzzle[] = [];
+export const bfs = (initial: Puzzle, goal: Puzzle) => {
+  type Node = {
+    puzzle: Puzzle;
+    parent: Node;
+  };
+
+  let open: Node[] = [{ puzzle: initial, parent: null }];
+  let closed: Node[] = [];
 
   let currentNode;
   while (open.length > 0) {
@@ -16,10 +17,10 @@ export const bfs = (
 
     // Generate Successors
     let successors = [
-      currentNode.left(),
-      currentNode.right(),
-      currentNode.up(),
-      currentNode.down(),
+      currentNode.puzzle.left(),
+      currentNode.puzzle.right(),
+      currentNode.puzzle.up(),
+      currentNode.puzzle.down(),
     ];
 
     // Remove successors present in closed or that are null
@@ -38,10 +39,16 @@ export const bfs = (
 
     for (let i = 0; i < successors.length; i++) {
       if (_.isEqual(successors[i], goal)) {
-        closed.push(successors[i]);
-        return closed;
+        closed.push({ puzzle: successors[i], parent: currentNode });
+        let backtrackNode = currentNode;
+        let solution = [successors[i]];
+        while (backtrackNode !== null) {
+          solution.push(backtrackNode.puzzle);
+          backtrackNode = backtrackNode.parent;
+        }
+        return solution.reverse();
       }
-      open.push(successors[i]);
+      open.push({ puzzle: successors[i], parent: currentNode });
     }
   }
 };
@@ -128,14 +135,20 @@ export const simpleHillClimbing = (
       return true;
     });
 
+    let betterNode = currentNode;
     for (let i = 0; i < successors.length; i++) {
       if (_.isEqual(successors[i], goal)) {
         closed.push(successors[i]);
         return closed;
       } else if (h(successors[i], goal) < h(currentNode, goal)) {
-        open = successors[i];
+        betterNode = successors[i];
         break;
       }
+    }
+
+    // TODO: Update to return failure
+    if (_.isEqual(currentNode, betterNode)) {
+      return closed;
     }
   }
 };

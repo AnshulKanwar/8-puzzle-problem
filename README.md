@@ -1,6 +1,7 @@
 # 8 Puzzle Problem Solver
 
 Built using ReactJs.
+
 The site can be viewed at https://k3rnalp4n1c.github.io/8-puzzle-problem/
 
 ### Caution - Has lots of Bugs!!!
@@ -20,11 +21,11 @@ The site can be viewed at https://k3rnalp4n1c.github.io/8-puzzle-problem/
     - [ ] User specified initial and final state
     - [x] User specified algorithm and heuristic
 3. Add algorithms
+    - [x] Breadth First Search (BFS)
+    - [ ] Depth First Search (DFS)
     - [x] Best First Search (BFS) 
     - [x] Simple Hill Climbing
     - [ ] Steepest Hill Climbing
-    - [ ] Depth First Search (DFS)
-    - [ ] Breadth First Search (BFS)
 4. Add Heuristics
     - [x] Misplaced Tiles
     - [x] Manhattan Distacen

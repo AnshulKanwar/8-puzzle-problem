@@ -12,11 +12,11 @@ function App() {
 
   const [goalState, setGoalState] = useState([
     [1, 2, 3],
-    [8, 4, 5],
-    [null, 7, 6],
+    [null, 4, 5],
+    [8, 7, 6],
   ]);
 
-  const [algorithm, setAlgorithm] = useState("simple-hill-climbing");
+  const [algorithm, setAlgorithm] = useState("breadth-first-search");
   const [heuristic, setHeuristic] = useState("misplaced-tiles");
 
   return (
