@@ -21,7 +21,20 @@ function App() {
 
   return (
     <div className={style.App}>
-      <h1 className={style.header}>8 Puzzle Problem Solver</h1>
+      <div className={style.header}>
+        <div>
+          <h2>AI Minor Project</h2>
+          <h1 className={style.title}>8 Puzzle Problem Solver</h1>
+        </div>
+        <div>
+          <span className={style.credits}>
+            Developed By:{" "}
+            <span className={style.names}>
+              <span>Anshul Kanwar</span> <span>Agamjot Singh</span>
+            </span>
+          </span>
+        </div>
+      </div>
       <div className={style.container}>
         <UserInput
           initialState={initialState}

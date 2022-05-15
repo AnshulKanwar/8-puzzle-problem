@@ -9,11 +9,23 @@
 }
 
 .header {
-    text-align: center;
-    padding: 1em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3em;
     margin-bottom: 1em;
     background-color: black;
     color: white;
+}
+
+.credits {
+    display: flex;
+    column-gap: 20px;
+}
+
+.names {
+    display: flex;
+    flex-direction: column;
 }
 
 .container {

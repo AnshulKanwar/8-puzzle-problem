@@ -109,7 +109,12 @@ export const simpleHillClimbing = (
   let closed: Puzzle[] = [];
 
   let currentNode;
-  while (true) {
+
+  // Fix This
+  const maxIterations = 1000;
+  let i = 0;
+
+  while (i < maxIterations) {
     currentNode = open;
     closed.push(currentNode);
 
@@ -150,5 +155,8 @@ export const simpleHillClimbing = (
     if (_.isEqual(currentNode, betterNode)) {
       return closed;
     }
+
+    i++;
   }
+  return null
 };
