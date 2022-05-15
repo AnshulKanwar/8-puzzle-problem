@@ -1,6 +1,7 @@
 {
   "name": "8-puzzle-problem",
   "version": "0.1.0",
+  "homepage": "https://anshulkanwar.github.io/8-puzzle-problem/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
@@ -26,7 +27,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://K3rnalP4n1c.github.io/8-puzzle-problem",
   "eslintConfig": {
     "extends": [
       "react-app",

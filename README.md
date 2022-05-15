@@ -2,7 +2,7 @@
 
 Built using ReactJs.
 
-The site can be viewed at https://k3rnalp4n1c.github.io/8-puzzle-problem/
+The site can be viewed at https://anshulkanwar.github.io/8-puzzle-problem/
 
 ### Caution - Has lots of Bugs!!!
 
